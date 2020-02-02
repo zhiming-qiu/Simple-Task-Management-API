@@ -5,7 +5,7 @@ A REST API for managing simple personal tasks.
 ## Preparation
 
 * Ensure node version manager `nvm` is installed
-* Ensure node version is set to a proper version (eg 8.9.3) via `nvm install 8.9.3 && num use 8.9.3`
+* Ensure node version is set to a proper version (eg 8.9.3) via `nvm install 8.9.3 && nvm use 8.9.3`
 * Ensure module `swagger` is installed via `npm install -g swagger`
 
 
