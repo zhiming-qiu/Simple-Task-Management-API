@@ -26,7 +26,8 @@ var util = require('util');
  */
 module.exports = {
   get: get,
-  put: put
+  put: put,
+  del: del
 };
 
 var _taskVault = [];
@@ -38,19 +39,24 @@ var _taskVault = [];
   Param 2: a handle to the response object
  */
 function get(req, res) {
-  // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
-  // var name = req.swagger.params.name.value || 'stranger';
-  // var hello = util.format('Hello, %s!', name);
-
-  // this sends back a JSON response which is a single string
-  // res.json(hello);
   res.json(_taskVault);
-  // res.json("Hello");
 }
 
 function put(req, res) {
-  // TODO Extract tasks from req and update _taskVault
-  // console.log("=======" + req.body.task_id);
   _taskVault.push(req.body);
+  res.json(_taskVault);
+}
+
+function del(req, res) {
+  var toDelete = -1;
+  for (var i = 0; i < _taskVault.length; i++) {
+    if (_taskVault[i].task_id === req.body.task_id) {
+      toDelete = i;
+      break;
+    }
+  }
+  if (toDelete != -1) {
+    _taskVault.splice(i, 1);
+  }
   res.json(_taskVault);
 }

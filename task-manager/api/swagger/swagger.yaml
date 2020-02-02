@@ -68,6 +68,30 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+    delete:
+      description: Delete task for the caller
+      # used as the method name of the controller
+      operationId: del
+      parameters:
+        - in: body
+          name: task
+          description: Task to delete
+          schema:
+            type: object
+            properties:
+              task_id:
+                type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/PutTasksResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
             
   /swagger:
     x-swagger-pipe: swagger_raw
