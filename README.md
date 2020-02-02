@@ -12,12 +12,12 @@ A REST API for managing simple personal tasks.
 ## Start service
 
 ```
-swagger project start hello-world
+swagger project start task-manager
 ```
 
 ## Start doc page
 ```
-swagger project edit hello-world
+swagger project edit task-manager
 ```
 
-Browser will open a page for you to explore API. For now there is only one API: `GET/hello`
+Browser will open a page for you to explore API. For now there is only two API: `GET/tasks` and `PUT/tasks`
