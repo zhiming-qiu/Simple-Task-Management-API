@@ -25,8 +25,11 @@ var util = require('util');
   we specify that in the exports of this module that 'hello' maps to the function named 'hello'
  */
 module.exports = {
-  hello: hello
+  get: get,
+  put: put
 };
+
+var _taskVault = [];
 
 /*
   Functions in a127 controllers used for operations should take two parameters:
@@ -34,11 +37,20 @@ module.exports = {
   Param 1: a handle to the request object
   Param 2: a handle to the response object
  */
-function hello(req, res) {
+function get(req, res) {
   // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
-  var name = req.swagger.params.name.value || 'stranger';
-  var hello = util.format('Hello, %s!', name);
+  // var name = req.swagger.params.name.value || 'stranger';
+  // var hello = util.format('Hello, %s!', name);
 
   // this sends back a JSON response which is a single string
-  res.json(hello);
+  // res.json(hello);
+  res.json(_taskVault);
+  // res.json("Hello");
+}
+
+function put(req, res) {
+  // TODO Extract tasks from req and update _taskVault
+  // console.log("=======" + req.body.task_id);
+  _taskVault.push(req.body);
+  res.json(_taskVault);
 }
