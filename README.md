@@ -21,4 +21,10 @@ swagger project start task-manager
 swagger project edit task-manager
 ```
 
-Browser will open a page for you to explore API. For now there is only two API: `GET/tasks` and `PUT/tasks`
+Browser will open a page for you to explore API. For now the following APIs are implemented:
+* `GET/tasks`
+* `PUT/tasks`
+* `DELETE/tasks`
+* `PUT/tasks/start`
+* `PUT/tasks/close`
+* `PUT/tasks/stop`

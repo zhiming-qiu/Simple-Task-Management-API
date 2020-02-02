@@ -25,12 +25,6 @@ paths:
       description: Returns tasks to the caller
       # used as the method name of the controller
       operationId: get
-      # parameters:
-      #   - name: name
-      #     in: query
-      #     description: The name of the person to whom to say hello
-      #     required: false
-      #     type: string
       responses:
         "200":
           description: Success
@@ -50,6 +44,7 @@ paths:
         - in: body
           name: task
           description: Task to add
+          required: true
           schema:
             type: object
             properties:
@@ -76,6 +71,36 @@ paths:
         - in: body
           name: task
           description: Task to delete
+          required: true
+          schema:
+            type: object
+            required:
+              - task_id
+            properties:
+              task_id:
+                type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/PutTasksResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /tasks/start:
+    x-swagger-router-controller: task-manager
+    put:
+      description: Start task for the caller
+      # used as the method name of the controller
+      operationId: start
+      parameters:
+        - in: body
+          name: task
+          description: Task to start
+          required: true
           schema:
             type: object
             properties:
@@ -92,7 +117,61 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-            
+  /tasks/close:
+    x-swagger-router-controller: task-manager
+    put:
+      description: Close task for the caller
+      # used as the method name of the controller
+      operationId: close
+      parameters:
+        - in: body
+          name: task
+          description: Task to close
+          required: true
+          schema:
+            type: object
+            properties:
+              task_id:
+                type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/PutTasksResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /tasks/stop:
+    x-swagger-router-controller: task-manager
+    put:
+      description: Stop task for the caller
+      # used as the method name of the controller
+      operationId: stop
+      parameters:
+        - in: body
+          name: task
+          description: Task to stop
+          required: true
+          schema:
+            type: object
+            properties:
+              task_id:
+                type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/PutTasksResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+           
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions

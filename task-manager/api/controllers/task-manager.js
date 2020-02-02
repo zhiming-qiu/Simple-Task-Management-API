@@ -27,10 +27,15 @@ var util = require('util');
 module.exports = {
   get: get,
   put: put,
-  del: del
+  del: del,
+  start: start,
+  close: close,
+  stop: stop
 };
 
-var _taskVault = [];
+var _taskVault = [
+  {'task_id': 'a', 'task_description': 'Task A', 'status': 'open'}
+];
 
 /*
   Functions in a127 controllers used for operations should take two parameters:
@@ -60,3 +65,34 @@ function del(req, res) {
   }
   res.json(_taskVault);
 }
+
+function start(req, res) {
+  for (var i = 0; i < _taskVault.length; i++) {
+    if (_taskVault[i].task_id === req.body.task_id) {
+      _taskVault[i].status = "in progress";
+      break;
+    }
+  }
+  res.json(_taskVault);
+}
+
+function close(req, res) {
+  for (var i = 0; i < _taskVault.length; i++) {
+    if (_taskVault[i].task_id === req.body.task_id) {
+      _taskVault[i].status = "done";
+      break;
+    }
+  }
+  res.json(_taskVault);
+}
+
+function stop(req, res) {
+  for (var i = 0; i < _taskVault.length; i++) {
+    if (_taskVault[i].task_id === req.body.task_id) {
+      _taskVault[i].status = "open";
+      break;
+    }
+  }
+  res.json(_taskVault);
+}
+
