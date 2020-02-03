@@ -25,6 +25,6 @@ Browser will open a page for you to explore API. For now the following APIs are 
 * `GET/tasks`
 * `PUT/tasks`
 * `DELETE/tasks`
-* `PUT/tasks/start`
-* `PUT/tasks/close`
-* `PUT/tasks/stop`
+* `PUT/task/start`
+* `PUT/task/close`
+* `PUT/task/stop`

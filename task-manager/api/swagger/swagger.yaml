@@ -90,7 +90,7 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-  /tasks/start:
+  /task/start:
     x-swagger-router-controller: task-manager
     put:
       description: Start task for the caller
@@ -117,7 +117,7 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-  /tasks/close:
+  /task/close:
     x-swagger-router-controller: task-manager
     put:
       description: Close task for the caller
@@ -144,7 +144,7 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-  /tasks/stop:
+  /task/stop:
     x-swagger-router-controller: task-manager
     put:
       description: Stop task for the caller
