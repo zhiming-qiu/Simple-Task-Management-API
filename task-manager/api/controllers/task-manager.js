@@ -48,6 +48,7 @@ function get(req, res) {
 }
 
 function put(req, res) {
+  req.body.status = 'open';
   _taskVault.push(req.body);
   res.json(_taskVault);
 }
